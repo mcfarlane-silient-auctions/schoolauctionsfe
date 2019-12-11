@@ -1,3 +1,186 @@
-# [START app_yaml]
-runtime: nodejs10
-# [END app_yaml]
+application: schoolauctionsfe
+version: 1
+runtime: python
+api_version: 1
+
+default_expiration: "30d"
+
+handlers:
+- url: /(.*\.(appcache|manifest))
+  mime_type: text/cache-manifest
+  static_files: src/\1
+  upload: src/(.*\.(appcache|manifest))
+  expiration: "0m"
+
+- url: /(.*\.atom)
+  mime_type: application/atom+xml
+  static_files: src/\1
+  upload: src/(.*\.atom)
+  expiration: "1h"
+
+- url: /(.*\.crx)
+  mime_type: application/x-chrome-extension
+  static_files: src/\1
+  upload: src/(.*\.crx)
+
+- url: /(.*\.css)
+  mime_type: text/css
+  static_files: src/\1
+  upload: src/(.*\.css)
+
+- url: /(.*\.eot)
+  mime_type: application/vnd.ms-fontobject
+  static_files: src/\1
+  upload: src/(.*\.eot)
+
+- url: /(.*\.htc)
+  mime_type: text/x-component
+  static_files: src/\1
+  upload: src/(.*\.htc)
+
+- url: /(.*\.html)
+  mime_type: text/html
+  static_files: src/\1
+  upload: src/(.*\.html)
+  expiration: "1h"
+
+- url: /(.*\.ico)
+  mime_type: image/x-icon
+  static_files: src/\1
+  upload: src/(.*\.ico)
+  expiration: "7d"
+
+- url: /(.*\.js)
+  mime_type: text/javascript
+  static_files: src/\1
+  upload: src/(.*\.js)
+
+- url: /(.*\.json)
+  mime_type: application/json
+  static_files: src/\1
+  upload: src/(.*\.json)
+  expiration: "1h"
+
+- url: /(.*\.m4v)
+  mime_type: video/m4v
+  static_files: src/\1
+  upload: src/(.*\.m4v)
+
+- url: /(.*\.mp4)
+  mime_type: video/mp4
+  static_files: src/\1
+  upload: src/(.*\.mp4)
+
+- url: /(.*\.(ogg|oga))
+  mime_type: audio/ogg
+  static_files: src/\1
+  upload: src/(.*\.(ogg|oga))
+
+- url: /(.*\.ogv)
+  mime_type: video/ogg
+  static_files: src/\1
+  upload: src/(.*\.ogv)
+
+- url: /(.*\.otf)
+  mime_type: font/opentype
+  static_files: src/\1
+  upload: src/(.*\.otf)
+
+- url: /(.*\.rss)
+  mime_type: application/rss+xml
+  static_files: src/\1
+  upload: src/(.*\.rss)
+  expiration: "1h"
+
+- url: /(.*\.safariextz)
+  mime_type: application/octet-stream
+  static_files: src/\1
+  upload: src/(.*\.safariextz)
+
+- url: /(.*\.(svg|svgz))
+  mime_type: images/svg+xml
+  static_files: src/\1
+  upload: src/(.*\.(svg|svgz))
+
+- url: /(.*\.swf)
+  mime_type: application/x-shockwave-flash
+  static_files: src/\1
+  upload: src/(.*\.swf)
+
+- url: /(.*\.ttf)
+  mime_type: font/truetype
+  static_files: src/\1
+  upload: src/(.*\.ttf)
+
+- url: /(.*\.txt)
+  mime_type: text/plain
+  static_files: src/\1
+  upload: src/(.*\.txt)
+
+- url: /(.*\.unity3d)
+  mime_type: application/vnd.unity
+  static_files: src/\1
+  upload: src/(.*\.unity3d)
+
+- url: /(.*\.webm)
+  mime_type: video/webm
+  static_files: src/\1
+  upload: src/(.*\.webm)
+
+- url: /(.*\.webp)
+  mime_type: image/webp
+  static_files: src/\1
+  upload: src/(.*\.webp)
+
+- url: /(.*\.woff)
+  mime_type: application/x-font-woff
+  static_files: src/\1
+  upload: src/(.*\.woff)
+
+- url: /(.*\.xml)
+  mime_type: application/xml
+  static_files: src/\1
+  upload: src/(.*\.xml)
+  expiration: "1h"
+
+- url: /(.*\.xpi)
+  mime_type: application/x-xpinstall
+  static_files: src/\1
+  upload: src/(.*\.xpi)
+
+# image files
+- url: /(.*\.(bmp|gif|ico|jpeg|jpg|png))
+  static_files: src/\1
+  upload: src/(.*\.(bmp|gif|ico|jpeg|jpg|png))
+
+# audio files
+- url: /(.*\.(mid|midi|mp3|wav))
+  static_files: src/\1
+  upload: src/(.*\.(mid|midi|mp3|wav))
+
+# windows files
+- url: /(.*\.(doc|exe|ppt|rtf|xls))
+  static_files: src/\1
+  upload: src/(.*\.(doc|exe|ppt|rtf|xls))
+
+# compressed files
+- url: /(.*\.(bz2|gz|rar|tar|tgz|zip))
+  static_files: src/\1
+  upload: src/(.*\.(bz2|gz|rar|tar|tgz|zip))
+
+# index files
+- url: /(.+)/
+  static_files: src/\1/index.html
+  upload: src/(.+)/index.html
+  expiration: "15m"
+
+- url: /(.+)
+  src_files: src/\1/index.html
+  upload: src/(.+)/index.html
+  expiration: "15m"
+
+# site root
+- url: /
+  static_files: src/index.html
+  upload: src/index.html
+  expiration: "15m"
