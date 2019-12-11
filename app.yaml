@@ -175,7 +175,7 @@ handlers:
   expiration: "15m"
 
 - url: /(.+)
-  src_files: src/\1/index.html
+  static_files: src/\1/index.html
   upload: src/(.+)/index.html
   expiration: "15m"
 
