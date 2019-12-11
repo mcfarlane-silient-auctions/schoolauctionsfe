@@ -1,1 +1,3 @@
-runtime: nodejs
+# [START app_yaml]
+runtime: nodejs10
+# [END app_yaml]
